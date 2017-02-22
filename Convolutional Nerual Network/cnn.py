@@ -1,19 +1,4 @@
 """
-Instruction:
-
-In this section, you are asked to train a CNN with different hyperparameters.
-To start with training, you need to fill in the incomplete code. There are two
-places that you need to complete:
-a) Backward pass equations for a convolutional layer.
-b) Weight update equations with momentum.
-
-After correctly fill in the code, modify the hyperparameters in "main()".
-You can then run this file with the command: "python cnn.py" in your terminal.
-The program will automatically check your gradient implementation before start.
-The program will print out the training progress, and it will display the
-training curve by the end. You can optionally save the model by uncommenting
-the lines in "main()". You can also optionally load a trained model by
-uncommenting the lines before the training.
 
 Important Notes:
 1. The Conv2D function has already been implemented. To implement the backward
@@ -169,12 +154,6 @@ def Conv2DBackward(grad_y, x, y, w):
     grad_w=np.transpose(grad_w,[1,2,0,3])
     grad_x = Conv2D(grad_y,np.transpose(w,[0,1,3,2])[::-1,::-1],pad=(I-1,J-1))
     return grad_x, grad_w
-    ###########################
-    # Insert your code here.
-    # grad_x = ...
-    # grad_w = ...
-    # return grad_x, grad_w
-    ###########################
     raise Exception('Not implemented')
 
 
@@ -259,17 +238,7 @@ def CNNUpdate(model, eps, momentum):
     model['b1'] = model['b1']-model['v4']
     model['b2'] = model['b2']-model['v5']
     model['b3'] = model['b3']-model['v6']
-    ###########################
-    # Insert your code here.
-    # Update the weights.
-    # model['W1'] = ...
-    # model['W2'] = ...
-    # model['W3'] = ...
-    # model['b1'] = ...
-    # model['b2'] = ...
-    # model['b3'] = ...
-    ###########################
-    #raise Exception('Not implemented')
+  
 
 
 def main():
