@@ -1,21 +1,3 @@
-"""
-Instruction:
-
-In this section, you are asked to train a NN with different hyperparameters.
-To start with training, you need to fill in the incomplete code. There are 3
-places that you need to complete:
-a) Backward pass equations for an affine layer (linear transformation + bias).
-b) Backward pass equations for ReLU activation function.
-c) Weight update equations with momentum.
-
-After correctly fill in the code, modify the hyperparameters in "main()".
-You can then run this file with the command: "python nn.py" in your terminal.
-The program will automatically check your gradient implementation before start.
-The program will print out the training progress, and it will display the
-training curve by the end. You can optionally save the model by uncommenting
-the lines in "main()".
-"""
-
 from __future__ import division
 from __future__ import print_function
 
@@ -218,19 +200,8 @@ def NNUpdate(model, eps, momentum):
     model['b1'] = model['b1']-model['v4']
     model['b2'] = model['b2']-model['v5']
     model['b3'] = model['b3']-model['v6']
- 
+ _
 
-    ###########################
-    # Insert your code here.
-    # Update the weights.
-    # model['W1'] = ...
-    # model['W2'] = ...
-    # model['W3'] = ...
-    # model['b1'] = ...
-    # model['b2'] = ...
-    # model['b3'] = ...
-    ###########################
-    #raise Exception('Not implemented')
 
 
 def Train(model, forward, backward, update, eps, momentum, num_epochs,
@@ -255,7 +226,7 @@ def Train(model, forward, backward, update, eps, momentum, num_epochs,
             - valid_acc:      Validation accuracy.
     """
     inputs_train, inputs_valid, inputs_test, target_train, target_valid, \
-        target_test = LoadData('../toronto_face.npz')
+        target_test = LoadData('toronto_face.npz')
     rnd_idx = np.arange(inputs_train.shape[0])
     train_ce_list = []
     valid_ce_list = []
