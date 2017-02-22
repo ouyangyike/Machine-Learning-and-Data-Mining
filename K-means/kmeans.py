@@ -50,7 +50,7 @@ def ShowMeans(means, number=0):
 def main():
   K = 7
   iters = 200
-  inputs_train, inputs_valid, inputs_test, target_train, target_valid, target_test = LoadData('../toronto_face.npz')
+  inputs_train, inputs_valid, inputs_test, target_train, target_valid, target_test = LoadData('toronto_face.npz')
   means = KMeans(inputs_train, K, iters)
   ShowMeans(means, 0)
 
