@@ -32,16 +32,13 @@ def mogEM(x, K, iters, randConst=1, minVary=0):
     mn = np.mean(x, axis=1).reshape(-1, 1)
     vr = np.var(x, axis=1).reshape(-1, 1)
 
-    # Question 4.3: change the initializaiton with Kmeans here
-    #--------------------  Add your code here --------------------
+
     mu = mn + np.random.randn(N, K) * (np.sqrt(vr) / randConst)
 
     #uncomment when using the kmeans initialzation and comment last instruction
     #mu = KMeans(x, K, 5)
 
-    #------------------- Answers ---------------------
 
-    #------------------------------------------------------------
     vary = vr * np.ones((1, K)) * 2
     vary = (vary >= minVary) * vary + (vary < minVary) * minVary
 
@@ -134,7 +131,7 @@ def mogLogLikelihood(p, mu, vary, x):
 
 
 def q2():
-    # Question 4.2 and 4.3
+  
     K = 7
     iters = 10
     minVary = 0.01
@@ -142,13 +139,11 @@ def q2():
 
     # load data
     inputs_train, inputs_valid, inputs_test, target_train, target_valid, target_test = LoadData(
-        '../toronto_face.npz')
+        'toronto_face.npz')
 
     # Train a MoG model with 7 components on all training data, i.e., inputs_train,
     # with both original initialization and kmeans initialization.
-    #------------------- Add your code here ---------------------
 
-    #------------------- Answers ---------------------
     p, mu, vary, logLikelihood = mogEM(inputs_train, K, iters, randConst, minVary)
     print p
     ShowMeans(mu,1)
@@ -158,7 +153,7 @@ def q2():
 
 
 def q4():
-    # Question 4.4
+  
     iters = 10
     minVary = 0.01
     randConst = 1.7
@@ -170,7 +165,7 @@ def q4():
     errorValidation = np.zeros(T)
 
     # extract data of class 1-Anger, 4-Happy
-    dataQ4 = LoadDataQ4('../toronto_face.npz')
+    dataQ4 = LoadDataQ4('toronto_face.npz')
     # images
     x_train_anger = dataQ4['x_train_anger']
     x_train_happy = dataQ4['x_train_happy']
@@ -198,9 +193,7 @@ def q4():
 
         # Train a MoG model with K components
         # Hints: using (x_train_anger, x_train_happy) train 2 MoGs
-        #-------------------- Add your code here ------------------------------
-
-        #------------------- Answers ---------------------
+ 
         p2, mu2, vary2, logLikelihood2 = mogEM(x_train_anger, K, iters, randConst, minVary)
          
         p3, mu3, vary3, logLikelihood3 = mogEM(x_train_happy, K, iters, randConst, minVary)
@@ -226,9 +219,7 @@ def q4():
     # Plot the error rate
     plt.figure(0)
     plt.clf()
-    #-------------------- Add your code here --------------------------------
 
-    #------------------- Answers ---------------------
     # to be removed before release
     plt.plot(numComponents, errorTrain, 'r', label='Training')
     plt.plot(numComponents, errorValidation, 'g', label='Validation')
@@ -241,13 +232,11 @@ def q4():
 
 if __name__ == '__main__':
     #-------------------------------------------------------------------------
-    # Note: Question 4.2 and 4.3 both need to call function q2
-    # you need to comment function q4 below
+
     q2()
 
     #-------------------------------------------------------------------------
-    # Note: Question 4.4 both need to call function q4
-    # you need to comment function q2 above
+  
     #q4()
 
     raw_input('Press Enter to continue.')
